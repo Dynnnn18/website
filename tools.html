@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tools Management - PT. ARTHA SOLUSI ADITAMA</title>
   <link rel="stylesheet" href="dash.css">
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="tools.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -29,22 +28,14 @@
         </ul>
       </nav>
     </div>
-   <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inventory Tools</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="tabs.css">
-</head>
-<body>
-  <header class="main-title-header">
-    <h1 class="main-title"><i class="fas fa-cogs"></i> Tools Management</h1>
-    <p class="main-subtitle">Kelola inventaris alat dan barang dengan mudah dan efisien</p>
-  </header>
-    <main class="app-main">
+      <!-- ...existing sidebar ... -->
+    <div class="main-content">
+      <div class="content">
+        <header class="main-title-header">
+          <h1 class="main-title"><i class="fas fa-cogs"></i> Tools Management</h1>
+          <p class="main-subtitle">Kelola inventaris alat dan barang dengan mudah dan efisien</p>
+        </header>
+        <main class="app-main">
       <div class="tabs-container">
         <div class="tabs-nav">
           <button class="tab-btn active" id="tab-stock-btn" onclick="showTab('stock')"><i class="fas fa-toolbox"></i> Stock</button>
@@ -391,8 +382,8 @@
           </div>
         </div>
       </div>
-    </main>
-
+      </div>
+    </div>
     <!-- Modal Detail -->
     <div id="detailModal" class="modal">
       <div class="modal-content">
@@ -426,7 +417,6 @@
         </div>
       </div>
     </div>
-
     <!-- Modal Form -->
     <div id="formModal" class="modal">
       <div class="modal-content">
@@ -440,19 +430,16 @@
               <label for="namaBarang">Nama Barang*</label>
               <input type="text" id="namaBarang" placeholder="Masukkan nama barang" required>
             </div>
-            
             <div class="form-row">
               <div class="form-group">
                 <label for="jumlahBarang">Jumlah*</label>
                 <input type="number" id="jumlahBarang" min="1" placeholder="0" required>
               </div>
             </div>
-            
             <div class="form-group">
               <label for="notes">Catatan</label>
               <textarea id="notes" rows="3" placeholder="Tambahkan catatan..."></textarea>
             </div>
-            
             <div class="form-group">
               <label for="fotoUpload">Foto Barang</label>
               <div class="file-upload">
@@ -472,8 +459,6 @@
       </div>
     </div>
   </div>
-
   <script src="script.js"></script>
-
 </body>
 </html>
