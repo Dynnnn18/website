@@ -1,4 +1,4 @@
-/* ===== TOOLS PAGE STYLES (match style.css) ===== */
+/* TOOLS PAGE STYLES (versi sebelum perubahan besar) */
 :root {
   --primary-color: #3498db;
   --secondary-color: #2980b9;
@@ -12,7 +12,6 @@
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Tabs Navigation */
 .tabs-container {
   margin-bottom: 30px;
 }
@@ -70,7 +69,6 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Card & Section Header */
 .card {
   background: var(--white-color);
   border-radius: 8px;
@@ -96,7 +94,6 @@
   color: var(--primary-color);
 }
 
-/* Table Styles */
 .table-responsive {
   overflow-x: auto;
 }
@@ -123,7 +120,6 @@ tr:hover td {
   background: #f1f1f1;
 }
 
-/* Button Styles */
 .btn {
   padding: 8px 15px;
   border: none;
@@ -159,7 +155,6 @@ tr:hover td {
   background: #c0392b;
 }
 
-/* Modal Styles */
 .modal {
   display: none;
   position: fixed;
@@ -197,7 +192,6 @@ tr:hover td {
   color: var(--dark-color);
 }
 
-/* Form Styles */
 .form-group {
   margin-bottom: 20px;
 }
@@ -227,7 +221,6 @@ input:focus, select:focus, textarea:focus {
   margin-top: 20px;
 }
 
-/* Responsive Styles */
 @media (max-width: 992px) {
   .tabs-nav {
     flex-direction: column;
