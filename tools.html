@@ -1,182 +1,163 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tools Management - PT. ARTHA SOLUSI ADITAMA</title>
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="dash.css">
-    <link rel="stylesheet" href="tools.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tools Management - PT. ARTHA SOLUSI ADITAMA</title>
+  <link rel="stylesheet" href="dash.css">
+  <link rel="stylesheet" href="tools.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="dashboard-wrapper">
-        <!-- Sidebar Navigation -->
-        <div class="sidebar">
-            <div class="logo-container">
-                <img src="logo.png" alt="PT. ARTHA SOLUSI ADITAMA" class="logo">
-                <h1>PT. ARTHA SOLUSI ADITAMA</h1>
+  <div class="dashboard-wrapper">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="logo-container">
+        <img src="logo.png" alt="PT. ARTHA SOLUSI ADITAMA" class="logo">
+        <h1>PT. ARTHA SOLUSI ADITAMA</h1>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+          <li><a href="report.html"><i class="fas fa-file-alt"></i> <span>Report</span></a></li>
+          <li><a href="attendance.html"><i class="fas fa-calendar-check"></i> <span>Absensi</span></a></li>
+          <li><a href="datastore.html"><i class="fas fa-database"></i> <span>DataStore</span></a></li>
+          <li class="active"><a href="tools.html"><i class="fas fa-tools"></i> <span>Tools</span></a></li>
+          <li><a href="verifikasi_akun.html"><i class="fas fa-users"></i> <span>Daftar Akun</span></a></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="content">
+        <header class="main-title-header">
+          <h1 class="main-title"><i class="fas fa-cogs"></i> Tools Management</h1>
+          <p class="main-subtitle">Kelola inventaris alat dan barang dengan mudah dan efisien</p>
+        </header>
+        <main class="app-main">
+          <div class="tabs-container">
+            <div class="tabs-nav">
+              <button class="tab-btn active" id="tab-stock-btn" onclick="showTab('stock')"><i class="fas fa-toolbox"></i> Stock</button>
+              <button class="tab-btn" id="tab-permit-btn" onclick="showTab('permit')"><i class="fas fa-id-badge"></i> Permit</button>
+              <button class="tab-btn" id="tab-handover-btn" onclick="showTab('handover')"><i class="fas fa-handshake"></i> Handover</button>
+              <button class="tab-btn" id="tab-return-btn" onclick="showTab('return')"><i class="fas fa-undo"></i> Return</button>
             </div>
-            <div class="user-info">
-                <div class="avatar">
-                    <i class="fas fa-user-circle"></i>
+            <div class="tabs-content">
+              <div class="tab-panel" id="tab-stock" style="display:block;">
+                <!-- Konten Stock -->
+                <div class="section-header">
+                  <h2><i class="fas fa-toolbox"></i> Data Stock</h2>
+                  <button class="btn primary" onclick="openFormModal()"><i class="fas fa-plus"></i> Tambah</button>
                 </div>
-                <div class="user-details">
-                    <span class="username">John Doe</span>
-                    <span class="role">Administrator</span>
+                <div class="table-responsive">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Nama Barang</th>
+                        <th>Jumlah</th>
+                        <th>Catatan</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody id="stockTableBody">
+                      <!-- Data stock di sini -->
+                    </tbody>
+                  </table>
                 </div>
+              </div>
+              <div class="tab-panel" id="tab-permit">
+                <!-- Konten Permit -->
+                <div class="empty-section">Belum ada data permit.</div>
+              </div>
+              <div class="tab-panel" id="tab-handover">
+                <!-- Konten Handover -->
+                <div class="empty-section">Belum ada data handover.</div>
+              </div>
+              <div class="tab-panel" id="tab-return">
+                <!-- Konten Return -->
+                <div class="empty-section">Belum ada data return.</div>
+              </div>
             </div>
-            <nav class="main-nav">
-                <ul>
-                    <li>
-                        <a href="dashboard.html">
-                            <i class="fas fa-tachometer-alt"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="report.html">
-                            <i class="fas fa-file-alt"></i>
-                            <span>Report</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="attendance.html">
-                            <i class="fas fa-calendar-check"></i>
-                            <span>Absensi</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="datastore.html">
-                            <i class="fas fa-database"></i>
-                            <span>DataStore</span>
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a href="tools.html">
-                            <i class="fas fa-tools"></i>
-                            <span>Tools</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="verifikasi_akun.html">
-                            <i class="fas fa-users"></i>
-                            <span>Daftar Akun</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        
-        <div class="main-content">
-            <div class="content">
-                <header class="main-title-header">
-                    <h1 class="main-title"><i class="fas fa-cogs"></i> Tools Management</h1>
-                    <p class="main-subtitle">Kelola inventaris alat dan barang dengan mudah dan efisien</p>
-                </header>
-                <main class="app-main">
-                    <div class="tabs-container">
-                        <div class="tabs-nav">
-                            <button class="tab-btn active" id="tab-stock-btn" onclick="showTab('stock')"><i class="fas fa-toolbox"></i> Stock</button>
-                            <button class="tab-btn" id="tab-permit-btn" onclick="showTab('permit')"><i class="fas fa-id-badge"></i> Permit</button>
-                            <button class="tab-btn" id="tab-handover-btn" onclick="showTab('handover')"><i class="fas fa-handshake"></i> Handover</button>
-                            <button class="tab-btn" id="tab-return-btn" onclick="showTab('return')"><i class="fas fa-undo"></i> Return</button>
-                        </div>
-                        <div class="tabs-content">
-                            <!-- ...tab panels as before... -->
-                            ...existing code...
-                        </div>
-                    </div>
-                </main>
-            </div>
-        </div>
-
-    <!-- Modal Detail -->
-    <div id="detailModal" class="modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3><i class="fas fa-info-circle"></i> Detail Barang</h3>
-          <span class="close-btn" onclick="closeModal('detailModal')">&times;</span>
-        </div>
-        <div class="modal-body">
-          <div class="detail-photo">
-            <img id="detailFoto" src="" alt="Foto Barang" onerror="this.style.display='none'">
-            <p id="detailFotoText" class="text-muted">Tidak ada foto</p>
           </div>
-          <div class="detail-info">
-            <div class="info-item">
-              <label>Nama Barang:</label>
-              <span id="detailNama">-</span>
+        </main>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Detail -->
+  <div id="detailModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-info-circle"></i> Detail Barang</h3>
+        <span class="close-btn" onclick="closeModal('detailModal')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="detail-photo">
+          <img id="detailFoto" src="" alt="Foto Barang" onerror="this.style.display='none'">
+          <p id="detailFotoText" class="text-muted">Tidak ada foto</p>
+        </div>
+        <div class="detail-info">
+          <div class="info-item">
+            <label>Nama Barang:</label>
+            <span id="detailNama">-</span>
+          </div>
+          <div class="info-item">
+            <label>Jumlah:</label>
+            <span id="detailJumlah">-</span>
+          </div>
+          <div class="info-item">
+            <label>Catatan:</label>
+            <p id="detailNotes" class="notes">-</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn secondary" onclick="closeModal('detailModal')">Tutup</button>
+        <button class="btn primary" onclick="editCurrentItem()">Edit</button>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Form -->
+  <div id="formModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="formTitle"><i class="fas fa-plus-circle"></i> Tambah Barang</h3>
+        <span class="close-btn" onclick="closeModal('formModal')">&times;</span>
+      </div>
+      <form id="toolForm" onsubmit="event.preventDefault(); submitForm()">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="namaBarang">Nama Barang*</label>
+            <input type="text" id="namaBarang" placeholder="Masukkan nama barang" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="jumlahBarang">Jumlah*</label>
+              <input type="number" id="jumlahBarang" min="1" placeholder="0" required>
             </div>
-            <div class="info-item">
-              <label>Jumlah:</label>
-              <span id="detailJumlah">-</span>
-            </div>
-            <div class="info-item">
-              <label>Catatan:</label>
-              <p id="detailNotes" class="notes">-</p>
+          </div>
+          <div class="form-group">
+            <label for="notes">Catatan</label>
+            <textarea id="notes" rows="3" placeholder="Tambahkan catatan..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="fotoUpload">Foto Barang</label>
+            <div class="file-upload">
+              <input type="file" id="fotoUpload" accept="image/*">
+              <label for="fotoUpload" class="upload-btn">
+                <i class="fas fa-upload"></i> Pilih File
+              </label>
+              <span id="fileName">Belum ada file dipilih</span>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button class="btn secondary" onclick="closeModal('detailModal')">Tutup</button>
-          <button class="btn primary" onclick="editCurrentItem()">Edit</button>
+          <button type="button" class="btn secondary" onclick="closeModal('formModal')">Batal</button>
+          <button type="submit" class="btn primary">Simpan</button>
         </div>
-      </div>
-    </div>
-
-    <!-- Modal Form -->
-    <div id="formModal" class="modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 id="formTitle"><i class="fas fa-plus-circle"></i> Tambah Barang</h3>
-          <span class="close-btn" onclick="closeModal('formModal')">&times;</span>
-        </div>
-        <form id="toolForm" onsubmit="event.preventDefault(); submitForm()">
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="namaBarang">Nama Barang*</label>
-              <input type="text" id="namaBarang" placeholder="Masukkan nama barang" required>
-            </div>
-            
-            <div class="form-row">
-              <div class="form-group">
-                <label for="jumlahBarang">Jumlah*</label>
-                <input type="number" id="jumlahBarang" min="1" placeholder="0" required>
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label for="notes">Catatan</label>
-              <textarea id="notes" rows="3" placeholder="Tambahkan catatan..."></textarea>
-            </div>
-            
-            <div class="form-group">
-              <label for="fotoUpload">Foto Barang</label>
-              <div class="file-upload">
-                <input type="file" id="fotoUpload" accept="image/*">
-                <label for="fotoUpload" class="upload-btn">
-                  <i class="fas fa-upload"></i> Pilih File
-                </label>
-                <span id="fileName">Belum ada file dipilih</span>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn secondary" onclick="closeModal('formModal')">Batal</button>
-            <button type="submit" class="btn primary">Simpan</button>
-          </div>
-        </form>
-      </div>
+      </form>
     </div>
   </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
-
-    <!-- JavaScript Files -->
-    <script src="dashboard.js"></script>
-    <script src="tools.js"></script>
+  <script src="tools.js"></script>
 </body>
 </html>
