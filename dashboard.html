@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - PT. ARTHA SOLUSI ADITAMA</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="dash.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="logo-container">
+                <img src="logo.png" alt="Company Logo" class="logo">
+                <h1>PT. ARTHA SOLUSI ADITAMA</h1>
+            </div>
+            
+            <div class="user-info">
+                <div class="avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="user-details">
+                    <span class="username">John Doe</span>
+                    <span class="role">Administrator</span>
+                </div>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li class="active">
+                        <a href="dashboard.php">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="report.php">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Report</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="attendance.php">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Absensi</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="datastore.php">
+                            <i class="fas fa-database"></i>
+                            <span>DataStore</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tools.php">
+                            <i class="fas fa-tools"></i>
+                            <span>Tools</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="verifikasi_akun.php">
+                            <i class="fas fa-users"></i>
+                            <span>Daftar Akun</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+        </div>
+        
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <header class="topbar">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="user-actions">
+                    <div class="notification-bell">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-menu">
+                        <span class="username">John Doe</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="content">
+                <div class="welcome-section">
+                    <h2>Selamat Datang, <span class="username">John Doe</span>!</h2>
+                    <p class="welcome-message">Semoga hari Anda menyenangkan dan penuh produktivitas. Mari jaga keselamatan dan kesehatan kerja kita bersama.</p>
+                </div>
+                
+                <div class="motivation-section">
+                    <div class="motivation-card safety">
+                        <h3><i class="fas fa-shield-alt"></i> Safety First</h3>
+                        <p>"Keselamatan bukanlah prioritas, tetapi nilai yang harus melekat dalam setiap pekerjaan yang kita lakukan."</p>
+                        <p class="quote-author">- Tim K3 PT. ARTHA SOLUSI ADITAMA</p>
+                    </div>
+                    
+                    <div class="motivation-card work">
+                        <h3><i class="fas fa-bullseye"></i> Motivasi Kerja</h3>
+                        <p>"Kualitas kerja kita hari ini menentukan kesuksesan kita di masa depan. Lakukan yang terbaik dengan penuh tanggung jawab."</p>
+                        <p class="quote-author">- Management</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="hamburger.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
