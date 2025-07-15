@@ -29,136 +29,451 @@
         </ul>
       </nav>
     </div>
-    <!-- Main Content -->
-    <div class="main-content">
-      <div class="content">
-        <header class="main-title-header">
-          <h1 class="main-title"><i class="fas fa-cogs"></i> Tools Management</h1>
-          <p class="main-subtitle">Kelola inventaris alat dan barang dengan mudah dan efisien</p>
-        </header>
-        <main class="app-main">
-          <div class="tabs-container">
-            <div class="tabs-nav">
-              <button class="tab-btn active" id="tab-stock-btn" onclick="showTab('stock')"><i class="fas fa-toolbox"></i> Stock</button>
-              <button class="tab-btn" id="tab-permit-btn" onclick="showTab('permit')"><i class="fas fa-id-badge"></i> Permit</button>
-              <button class="tab-btn" id="tab-handover-btn" onclick="showTab('handover')"><i class="fas fa-handshake"></i> Handover</button>
-              <button class="tab-btn" id="tab-return-btn" onclick="showTab('return')"><i class="fas fa-undo"></i> Return</button>
-            </div>
-            <div class="tabs-content">
-              <div class="tab-panel" id="tab-stock" style="display:block;">
-                <!-- Konten Stock -->
-                <div class="section-header">
-                  <h2><i class="fas fa-toolbox"></i> Data Stock</h2>
-                  <button class="btn primary" onclick="openFormModal()"><i class="fas fa-plus"></i> Tambah</button>
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Tools</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="tabs.css">
+</head>
+<body>
+  <header class="main-title-header">
+    <h1 class="main-title"><i class="fas fa-cogs"></i> Tools Management</h1>
+    <p class="main-subtitle">Kelola inventaris alat dan barang dengan mudah dan efisien</p>
+  </header>
+    <main class="app-main">
+      <div class="tabs-container">
+        <div class="tabs-nav">
+          <button class="tab-btn active" id="tab-stock-btn" onclick="showTab('stock')"><i class="fas fa-toolbox"></i> Stock</button>
+          <button class="tab-btn" id="tab-permit-btn" onclick="showTab('permit')"><i class="fas fa-id-badge"></i> Permit</button>
+          <button class="tab-btn" id="tab-handover-btn" onclick="showTab('handover')"><i class="fas fa-handshake"></i> Handover</button>
+          <button class="tab-btn" id="tab-return-btn" onclick="showTab('return')"><i class="fas fa-undo"></i> Return</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel" id="tab-stock" style="display:block;">
+            <section class="borrowed-section card">
+              <div class="section-header">
+                <h2><i class="fas fa-clipboard-list"></i> Barang Dipinjam</h2>
+              </div>
+              <div id="borrowedTableWrapper">
+                <!-- Subsection: Perorang -->
+                <div class="subsection">
+                  <h3 id="perorangSectionHeader" style="margin-bottom:10px; cursor:pointer;"><i class="fas fa-user"></i> Perorang</h3>
+                  <div class="table-responsive" id="perorangTableWrapper" style="display:none;">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Nama Peminjam</th>
+                          <th>Nama Barang</th>
+                          <th>Jumlah Dipinjam</th>
+                          <th>Tanggal</th>
+                          <th>Catatan</th>
+                        </tr>
+                      </thead>
+                      <tbody id="borrowedList">
+                        <!-- Data akan diisi oleh JavaScript -->
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
+                <!-- Subsection: Project -->
+                <div class="subsection">
+                  <h3 id="projectSectionHeader" style="margin-bottom:10px; cursor:pointer;"><i class="fas fa-briefcase"></i> Project</h3>
+                  <div class="table-responsive" id="projectTableWrapper" style="display:none;">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Lokasi</th>
+                          <th>Penanggung Jawab</th>
+                          <th>Barang & Qty</th>
+                          <th>Tanggal</th>
+                          <th>Catatan</th>
+                        </tr>
+                      </thead>
+                      <tbody id="borrowedProjectList">
+                        <!-- Data project permit yang sudah diapprove akan diisi JS -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="tools-section card">
+              <div class="section-header">
+                <h2><i class="fas fa-toolbox"></i> Stock Tools</h2>
+                <button class="btn primary" onclick="toggleForm()">
+                  <i class="fas fa-plus"></i> Tambah Barang
+                </button>
+              </div>
+              <div>
                 <div class="table-responsive">
                   <table>
                     <thead>
                       <tr>
+                        <th>#</th>
                         <th>Nama Barang</th>
-                        <th>Jumlah</th>
-                        <th>Catatan</th>
+                        <th>Total Jumlah</th>
+                        <th>Tersedia</th>
+                        <th>Dipinjam</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
-                    <tbody id="stockTableBody">
-                      <!-- Data stock di sini -->
+                    <tbody id="toolList">
+                      <!-- Data akan diisi oleh JavaScript -->
                     </tbody>
                   </table>
                 </div>
               </div>
-              <div class="tab-panel" id="tab-permit">
-                <!-- Konten Permit -->
-                <div class="empty-section">Belum ada data permit.</div>
-              </div>
-              <div class="tab-panel" id="tab-handover">
-                <!-- Konten Handover -->
-                <div class="empty-section">Belum ada data handover.</div>
-              </div>
-              <div class="tab-panel" id="tab-return">
-                <!-- Konten Return -->
-                <div class="empty-section">Belum ada data return.</div>
-              </div>
-            </div>
+            </section>
           </div>
-        </main>
-      </div>
-    </div>
-  </div>
-  <!-- Modal Detail -->
-  <div id="detailModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3><i class="fas fa-info-circle"></i> Detail Barang</h3>
-        <span class="close-btn" onclick="closeModal('detailModal')">&times;</span>
-      </div>
-      <div class="modal-body">
-        <div class="detail-photo">
-          <img id="detailFoto" src="" alt="Foto Barang" onerror="this.style.display='none'">
-          <p id="detailFotoText" class="text-muted">Tidak ada foto</p>
+          <div class="tab-panel" id="tab-permit" style="display:none;">
+            <section class="permit-section card">
+              <div class="section-header">
+                <h2><i class="fas fa-id-badge"></i> Permit Tools</h2>
+              </div>
+              <form id="borrowRequestForm" class="borrow-request-form" onsubmit="event.preventDefault(); /* submitBorrowRequest() */">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="borrowFrom">Pinjam Dari*</label>
+                    <input type="text" id="borrowFrom" value="Inventory" readonly required>
+                  </div>
+                  <div class="form-group">
+                    <label for="borrowerName">Nama Peminjam*</label>
+                    <select id="borrowerName" required>
+                      <option value="">Pilih Peminjam</option>
+                      <option value="Ady">Ady</option>
+                      <option value="Abdul">Abdul</option>
+                      <option value="Raja">Raja</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="borrowTool">Tools*</label>
+                    <input list="borrowToolList" id="borrowTool" required placeholder="Cari atau pilih tools">
+                    <datalist id="borrowToolList">
+                      <!-- Opsi tools akan diisi JS -->
+                    </datalist>
+                  </div>
+                  <div class="form-group">
+                    <label for="borrowQty">Qty*</label>
+                    <input type="number" id="borrowQty" min="1" placeholder="0" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="borrowNotes">Catatan*</label>
+                  <textarea id="borrowNotes" rows="2" placeholder="Tambahkan catatan..." required></textarea>
+                </div>
+                <div class="form-actions">
+                  <button type="submit" class="btn primary">Submit Request</button>
+                </div>
+              </form>
+            </section>
+            <section class="project-permit-section card">
+              <div class="section-header">
+                <h2><i class="fas fa-briefcase"></i> Project Permit Tools</h2>
+              </div>
+              <form id="projectPermitForm" class="project-permit-form" onsubmit="event.preventDefault(); /* submitProjectPermit() */">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="projectBorrowFrom">Pinjam Dari*</label>
+                    <input type="text" id="projectBorrowFrom" value="Inventory" readonly required>
+                  </div>
+                  <div class="form-group">
+                    <label for="projectLocation">Lokasi Barang*</label>
+                    <input type="text" id="projectLocation" placeholder="Masukkan lokasi barang" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="projectPIC">Nama Penanggung Jawab*</label>
+                    <select id="projectPIC" required>
+                      <option value="">Pilih Penanggung Jawab</option>
+                      <option value="Ady">Ady</option>
+                      <option value="Abdul">Abdul</option>
+                      <option value="Raja">Raja</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group" style="flex:1; align-self:end;">
+                    <label>&nbsp;</label>
+                    <button type="button" class="btn secondary" id="addProjectToolBtn" onclick="openAddProjectToolModal()"><i class="fas fa-plus"></i> Tambah Barang dari Stock</button>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <table style="width:100%; margin-bottom:10px;" id="projectToolsTable">
+                    <thead>
+                      <tr>
+                        <th>Nama Barang</th>
+                        <th>Qty</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody id="projectToolsList">
+                      <!-- List barang yang dipilih -->
+                    </tbody>
+                  </table>
+                </div>
+                <!-- Modal Pilih Barang dari Stock -->
+                <div id="addProjectToolModal" class="modal">
+                  <div class="modal-content" style="max-width:400px;">
+                    <div class="modal-header">
+                      <h3><i class="fas fa-plus"></i> Pilih Barang dari Stock</h3>
+                      <span class="close-btn" onclick="closeAddProjectToolModal()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <label for="selectProjectTool">Nama Barang*</label>
+                        <select id="selectProjectTool" style="width:100%"></select>
+                      </div>
+                      <div class="form-group">
+                        <label for="selectProjectQty">Qty*</label>
+                        <input type="number" id="selectProjectQty" min="1" placeholder="0" style="width:100%">
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn secondary" onclick="closeAddProjectToolModal()">Batal</button>
+                      <button type="button" class="btn primary" onclick="addProjectToolFromModal()">Tambah</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="projectBorrowNotes">Catatan*</label>
+                  <textarea id="projectBorrowNotes" rows="2" placeholder="Tambahkan catatan..." required></textarea>
+                </div>
+                <div class="form-actions">
+                  <button type="submit" class="btn primary">Submit Project Permit</button>
+                </div>
+              </form>
+            </section>
+            <section class="pending-approvals-section card">
+              <div class="section-header">
+                <h2><i class="fas fa-clock"></i> Pending Approvals</h2>
+              </div>
+              <div class="table-responsive">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Tools</th>
+                      <th>Peminjam</th>
+                      <th>Qty</th>
+                      <th>Notes</th>
+                      <th>Waktu</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody id="pendingApprovalsList">
+                    <!-- Data pending approvals akan diisi JS -->
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section class="pending-project-approvals-section card">
+              <div class="section-header">
+                <h2><i class="fas fa-clock"></i> Pending Approval Project Permit Tools</h2>
+              </div>
+              <div class="table-responsive">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Lokasi</th>
+                      <th>Penanggung Jawab</th>
+                      <th>Barang & Qty</th>
+                      <th>Notes</th>
+                      <th>Waktu</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody id="pendingProjectApprovalsList">
+                    <!-- Data pending project approvals akan diisi JS -->
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+          <div class="tab-panel" id="tab-handover" style="display:none;">
+            <section class="handover-section card">
+              <div class="section-header">
+                <h2><i class="fas fa-handshake"></i> Handover Tools</h2>
+              </div>
+              <div class="handover-borrowed-list-section">
+                <h3 style="margin-bottom:10px;"><i class="fas fa-list"></i> Barang Dipinjam</h3>
+                <div class="table-responsive">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Dari Teknisi</th>
+                        <th>Ke Teknisi</th>
+                        <th>Nama Barang</th>
+                        <th>Jumlah</th>
+                        <th>Tanggal</th>
+                        <th>Catatan*</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody id="handoverBorrowedList">
+                      <!-- Data barang dipinjam akan diisi JS -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+            <section class="pending-handover-approvals-section card">
+              <div class="section-header">
+                <h2><i class="fas fa-clock"></i> Pending Handover Approvals</h2>
+              </div>
+              <div class="table-responsive">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Tools</th>
+                      <th>Dari Teknisi</th>
+                      <th>Ke Teknisi</th>
+                      <th>Qty</th>
+                      <th>Notes</th>
+                      <th>Waktu</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody id="pendingHandoverApprovalsList">
+                    <!-- Data pending handover approvals akan diisi JS -->
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+          <div class="tab-panel" id="tab-return" style="display:none;">
+            <section class="return-section card">
+              <div class="section-header">
+                <h2><i class="fas fa-undo"></i> Return Tools</h2>
+              </div>
+              <div class="return-borrowed-list-section">
+                <h3 style="margin-bottom:10px;"><i class="fas fa-list"></i> Barang Dipinjam</h3>
+                <div class="table-responsive">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Nama Peminjam</th>
+                        <th>Nama Barang</th>
+                        <th>Jumlah Dipinjam</th>
+                        <th>Barang Ingin Dikembalikan</th>
+                        <th>Tanggal</th>
+                        <th>Catatan*</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody id="returnBorrowedList">
+                      <!-- Data barang dipinjam akan diisi JS -->
+                    </tbody>
+                  </table>
+                </div>
+                <h3 style="margin:20px 0 10px 0;"><i class="fas fa-briefcase"></i> Barang Project Dipinjam</h3>
+                <div class="table-responsive">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Lokasi</th>
+                        <th>Penanggung Jawab</th>
+                        <th>Barang & Qty</th>
+                        <th>Barang Ingin Dikembalikan</th>
+                        <th>Tanggal</th>
+                        <th>Catatan</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody id="returnProjectList">
+                      <!-- Data project permit yang sudah diapprove akan diisi JS -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+          </div>
         </div>
-        <div class="detail-info">
-          <div class="info-item">
-            <label>Nama Barang:</label>
-            <span id="detailNama">-</span>
-          </div>
-          <div class="info-item">
-            <label>Jumlah:</label>
-            <span id="detailJumlah">-</span>
-          </div>
-          <div class="info-item">
-            <label>Catatan:</label>
-            <p id="detailNotes" class="notes">-</p>
-          </div>
+      </div>
+    </main>
+
+    <!-- Modal Detail -->
+    <div id="detailModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fas fa-info-circle"></i> Detail Barang</h3>
+          <span class="close-btn" onclick="closeModal('detailModal')">&times;</span>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn secondary" onclick="closeModal('detailModal')">Tutup</button>
-        <button class="btn primary" onclick="editCurrentItem()">Edit</button>
-      </div>
-    </div>
-  </div>
-  <!-- Modal Form -->
-  <div id="formModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 id="formTitle"><i class="fas fa-plus-circle"></i> Tambah Barang</h3>
-        <span class="close-btn" onclick="closeModal('formModal')">&times;</span>
-      </div>
-      <form id="toolForm" onsubmit="event.preventDefault(); submitForm()">
         <div class="modal-body">
-          <div class="form-group">
-            <label for="namaBarang">Nama Barang*</label>
-            <input type="text" id="namaBarang" placeholder="Masukkan nama barang" required>
+          <div class="detail-photo">
+            <img id="detailFoto" src="" alt="Foto Barang" onerror="this.style.display='none'">
+            <p id="detailFotoText" class="text-muted">Tidak ada foto</p>
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="jumlahBarang">Jumlah*</label>
-              <input type="number" id="jumlahBarang" min="1" placeholder="0" required>
+          <div class="detail-info">
+            <div class="info-item">
+              <label>Nama Barang:</label>
+              <span id="detailNama">-</span>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="notes">Catatan</label>
-            <textarea id="notes" rows="3" placeholder="Tambahkan catatan..."></textarea>
-          </div>
-          <div class="form-group">
-            <label for="fotoUpload">Foto Barang</label>
-            <div class="file-upload">
-              <input type="file" id="fotoUpload" accept="image/*">
-              <label for="fotoUpload" class="upload-btn">
-                <i class="fas fa-upload"></i> Pilih File
-              </label>
-              <span id="fileName">Belum ada file dipilih</span>
+            <div class="info-item">
+              <label>Jumlah:</label>
+              <span id="detailJumlah">-</span>
+            </div>
+            <div class="info-item">
+              <label>Catatan:</label>
+              <p id="detailNotes" class="notes">-</p>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn secondary" onclick="closeModal('formModal')">Batal</button>
-          <button type="submit" class="btn primary">Simpan</button>
+          <button class="btn secondary" onclick="closeModal('detailModal')">Tutup</button>
+          <button class="btn primary" onclick="editCurrentItem()">Edit</button>
         </div>
-      </form>
+      </div>
+    </div>
+
+    <!-- Modal Form -->
+    <div id="formModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="formTitle"><i class="fas fa-plus-circle"></i> Tambah Barang</h3>
+          <span class="close-btn" onclick="closeModal('formModal')">&times;</span>
+        </div>
+        <form id="toolForm" onsubmit="event.preventDefault(); submitForm()">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="namaBarang">Nama Barang*</label>
+              <input type="text" id="namaBarang" placeholder="Masukkan nama barang" required>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="jumlahBarang">Jumlah*</label>
+                <input type="number" id="jumlahBarang" min="1" placeholder="0" required>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="notes">Catatan</label>
+              <textarea id="notes" rows="3" placeholder="Tambahkan catatan..."></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="fotoUpload">Foto Barang</label>
+              <div class="file-upload">
+                <input type="file" id="fotoUpload" accept="image/*">
+                <label for="fotoUpload" class="upload-btn">
+                  <i class="fas fa-upload"></i> Pilih File
+                </label>
+                <span id="fileName">Belum ada file dipilih</span>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn secondary" onclick="closeModal('formModal')">Batal</button>
+            <button type="submit" class="btn primary">Simpan</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
+
   <script src="script.js"></script>
+
 </body>
 </html>
