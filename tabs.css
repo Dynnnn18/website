@@ -120,7 +120,11 @@ tr:hover td {
 #tab-return .card { border-left: 4px solid #d32f2f; }
 
 /* Responsive */
-@media (max-width: 700px) {
+@media (max-width: 992px) {
+  .tabs-nav {
+    flex-direction: column;
+    gap: 6px;
+  }
   .tabs-content {
     padding: 10px 2px 2px 2px;
   }
@@ -128,6 +132,41 @@ tr:hover td {
     padding: 10px 4px 4px 4px;
   }
   th, td {
-    padding: 7px 4px;
+    padding: 8px 6px;
+    font-size: 0.98em;
+  }
+}
+
+@media (max-width: 700px) {
+  .tabs-nav {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .tabs-content {
+    padding: 8px 1px 1px 1px;
+  }
+  .card {
+    padding: 6px 2px 2px 2px;
+  }
+  th, td {
+    padding: 7px 3px;
+    font-size: 0.95em;
+  }
+}
+
+@media (max-width: 480px) {
+  .tabs-content {
+    padding: 4px 0 0 0;
+  }
+  .card {
+    padding: 4px 1px 1px 1px;
+  }
+  th, td {
+    font-size: 0.9em;
+    padding: 6px 2px;
+  }
+  .tabs-nav .tab-btn {
+    font-size: 0.95em;
+    padding: 8px 8px;
   }
 }
