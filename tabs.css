@@ -26,7 +26,7 @@
   padding: 24px 18px 18px 18px;
 }
 
-/* Section Cards */
+/* Section Cards (hanya untuk konten tab, sidebar/topbar pakai dash.css) */
 .card {
   background: #f9f9f9;
   border-radius: 8px;
