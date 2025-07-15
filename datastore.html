@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataStore - PT. ARTHA SOLUSI ADITAMA</title>
+    <link rel="stylesheet" href="dash.css">
+    <link rel="stylesheet" href="datastore.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="logo-container">
+                <img src="logo.png" alt="Company Logo" class="logo">
+                <h1>PT. ARTHA SOLUSI ADITAMA</h1>
+            </div>
+            
+            <div class="user-info">
+                <div class="avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="user-details">
+                    <span class="username">John Doe</span>
+                    <span class="role">Administrator</span>
+                </div>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li><a href="report.php"><i class="fas fa-file-alt"></i><span>Report</span></a></li>
+                    <li><a href="attendance.php"><i class="fas fa-calendar-check"></i><span>Absensi</span></a></li>
+                    <li class="active"><a href="datastore.php"><i class="fas fa-database"></i><span>DataStore</span></a></li>
+                    <li><a href="tools.php"><i class="fas fa-tools"></i><span>Tools</span></a></li>
+                    <li><a href="verifikasi_akun.php"><i class="fas fa-users"></i><span>Daftar Akun</span></a></li>
+                </ul>
+            </nav>
+            
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="topbar">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="user-actions">
+                    <div class="notification-bell">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-menu">
+                        <span class="username">John Doe</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="content">
+                <h2>DataStore Files</h2>
+                
+                <div class="datastore-container">
+                    <div class="datastore-tabs">
+                        <button class="tab-btn" data-tab="report">Report</button>
+                        <button class="tab-btn active" data-tab="absensi">Absensi</button>
+                        <button class="tab-btn" data-tab="activity">Activity</button>
+                    </div>
+                    
+                    <div class="datastore-content">
+                        <!-- Report Files Tab -->
+                        <div class="tab-pane" id="report-tab">
+                            <div class="file-list">
+                                <p class="no-files">No report files available</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Absensi Files Tab -->
+                        <div class="tab-pane active" id="absensi-tab">
+                            <div class="date-selector">
+                                <label for="attendance-date">Pilih Tanggal:</label>
+                                <input type="date" id="attendance-date" name="attendance-date">
+                                <button id="load-attendance" class="load-btn">
+                                    <i class="fas fa-search"></i> Muat Data
+                                </button>
+                            </div>
+                            
+                            <div class="attendance-summary">
+                                <div class="summary-card">
+                                    <div class="summary-icon">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div class="summary-content">
+                                        <span class="summary-title">Total Karyawan</span>
+                                        <span class="summary-value" id="total-employees">0</span>
+                                    </div>
+                                </div>
+                                <div class="summary-card">
+                                    <div class="summary-icon">
+                                        <i class="fas fa-user-check"></i>
+                                    </div>
+                                    <div class="summary-content">
+                                        <span class="summary-title">Hadir</span>
+                                        <span class="summary-value" id="present-count">0</span>
+                                    </div>
+                                </div>
+                                <div class="summary-card">
+                                    <div class="summary-icon">
+                                        <i class="fas fa-user-times"></i>
+                                    </div>
+                                    <div class="summary-content">
+                                        <span class="summary-title">Tidak Hadir</span>
+                                        <span class="summary-value" id="absent-count">0</span>
+                                    </div>
+                                </div>
+                                <div class="summary-card">
+                                    <div class="summary-icon">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="summary-content">
+                                        <span class="summary-title">Terlambat</span>
+                                        <span class="summary-value" id="late-count">0</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="attendance-table-container">
+                                <div class="table-actions">
+                                    <div class="search-attendance">
+                                        <i class="fas fa-search"></i>
+                                        <input type="text" id="search-employee" placeholder="Cari nama karyawan...">
+                                    </div>
+                                    <button id="export-excel" class="export-btn">
+                                        <i class="fas fa-file-excel"></i> Export Excel
+                                    </button>
+                                </div>
+                                
+                                <table class="attendance-table">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Karyawan</th>
+                                            <th>Jam Masuk</th>
+                                            <th>Status</th>
+                                            <th>Rencana Kerja</th>
+                                            <th>Jam Pulang</th>
+                                            <th>Foto</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="attendance-data">
+                                        <tr class="no-data">
+                                            <td colspan="8">Pilih tanggal untuk melihat data absensi</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                                <div class="pagination">
+                                    <button id="prev-page" disabled><i class="fas fa-chevron-left"></i></button>
+                                    <span id="page-info">Halaman 1 dari 1</span>
+                                    <button id="next-page" disabled><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Activity Files Tab -->
+                        <div class="tab-pane" id="activity-tab">
+                            <div class="file-list">
+                                <p class="no-files">No activity files available</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Image Preview -->
+    <div id="image-modal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modal-image">
+        <div id="modal-caption"></div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="dashboard.js"></script>
+    <script src="datastore.js"></script>
+</body>
+</html>

@@ -1,0 +1,505 @@
+/* ===== ATTENDANCE SPECIFIC STYLES ===== */
+.reset-attendance {
+    margin-bottom: 1.5rem;
+}
+
+.btn-reset {
+    background-color: var(--warning);
+    color: white;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-reset:hover {
+    background-color: #e07b00;
+}
+
+.attendance-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
+}
+
+.attendance-card h3 {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.photo-options {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-camera, .btn-upload {
+    background-color: var(--light);
+    border: 1px solid #ddd;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.btn-camera:hover, .btn-upload:hover {
+    background-color: #e9ecef;
+}
+
+.or-text {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.camera-container {
+    display: none;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.camera-container video {
+    width: 100%;
+    max-height: 300px;
+    background-color: #000;
+}
+
+.camera-controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.btn-capture, .btn-cancel {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    font-size: 0.9rem;
+}
+
+.btn-capture {
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn-cancel {
+    background-color: var(--danger);
+    color: white;
+}
+
+.photo-preview {
+    margin-top: 1rem;
+}
+
+.photo-preview img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.btn-submit {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 0.5rem;
+}
+
+.btn-submit:hover {
+    background-color: var(--secondary);
+}
+
+.success-message, .pending-message, .not-allowed-message {
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.success-message {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+}
+
+.pending-message {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+}
+
+.not-allowed-message {
+    background-color: rgba(108, 117, 125, 0.1);
+    color: #6c757d;
+}
+
+.checkin-details {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+}
+
+.checkin-details h4 {
+    margin-bottom: 0.5rem;
+}
+
+.timestamp {
+    font-size: 0.9rem;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-activity {
+    display: inline-block;
+    margin-top: 0.8rem;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .photo-options {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .or-text {
+        margin: 0.5rem 0;
+    }
+    
+    .attendance-card {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .btn-reset, .btn-submit {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .camera-controls {
+        flex-direction: column;
+    }
+}
+
+/* Activity Form Styles */
+.activity-form {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.activity-form .form-group {
+    margin-bottom: 20px;
+}
+
+.activity-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.activity-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 14px;
+    resize: vertical;
+    transition: border-color 0.15s ease-in-out;
+}
+
+.activity-form textarea:focus {
+    outline: none;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+}
+
+.photo-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-upload {
+    padding: 8px 15px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-upload:hover {
+    background-color: #218838;
+}
+
+.upload-note {
+    font-size: 12px;
+    color: #6c757d;
+}
+
+.photos-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.photo-preview-item {
+    position: relative;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 120px;
+}
+
+.photo-preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.remove-photo {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(220, 53, 69, 0.8);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.remove-photo:hover {
+    background-color: #c82333;
+}
+
+/* Activity Submitted Styles */
+#activity-submitted {
+    padding: 20px;
+    background-color: #e8f5e9;
+    border-radius: 8px;
+    margin-top: 15px;
+    color: #2e7d32;
+}
+
+#activity-submitted i {
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+#activity-submitted p {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.activity-details {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 4px;
+    border-left: 4px solid #4caf50;
+}
+
+.activity-details h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #2e7d32;
+}
+
+.activity-details p {
+    white-space: pre-wrap;
+    margin-bottom: 0;
+    color: #495057;
+}
+
+.timestamp {
+    font-size: 13px;
+    color: #6c757d;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Info Message Styles */
+.info-message {
+    padding: 15px;
+    background-color: #e7f5ff;
+    border-radius: 8px;
+    color: #1864ab;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-message i {
+    font-size: 20px;
+}
+
+/* Activity Photo Upload Styles */
+.photos-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.photo-preview-item {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.photo-preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.remove-photo {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 22px;
+    height: 22px;
+    background-color: rgba(220, 53, 69, 0.9);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 12px;
+    border: none;
+    transition: all 0.2s;
+}
+
+.remove-photo:hover {
+    background-color: #c82333;
+    transform: scale(1.1);
+}
+
+.upload-note {
+    font-size: 13px;
+    color: #6c757d;
+    margin-left: 10px;
+}
+
+/* Submitted Photos Container */
+.submitted-photos-container {
+    margin-top: 20px;
+}
+
+.submitted-photos-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #495057;
+}
+
+.submitted-photos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.submitted-photo-item {
+    border: 1px solid #eee;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 150px;
+}
+
+.submitted-photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Add to your CSS file */
+.filename-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+
+.filename-list li {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: #555;
+}
+
+.filename-list li:last-child {
+    border-bottom: none;
+}
+
+.submitted-photos-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #495057;
+}

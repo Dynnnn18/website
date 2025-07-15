@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absensi - PT. ARTHA SOLUSI ADITAMA</title>
+    <link rel="stylesheet" href="dash.css">
+    <link rel="stylesheet" href="attendance.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="logo-container">
+                <img src="logo.png" alt="Company Logo" class="logo">
+                <h1>PT. ARTHA SOLUSI ADITAMA</h1>
+            </div>
+            
+            <div class="user-info">
+                <div class="avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="user-details">
+                    <span class="username">John Doe</span>
+                    <span class="role">Administrator</span>
+                </div>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li><a href="report.php"><i class="fas fa-file-alt"></i><span>Report</span></a></li>
+                    <li class="active"><a href="attendance.php"><i class="fas fa-calendar-check"></i><span>Absensi</span></a></li>
+                    <li><a href="datastore.php"><i class="fas fa-database"></i><span>DataStore</span></a></li>
+                    <li><a href="tools.php"><i class="fas fa-tools"></i><span>Tools</span></a></li>
+                    <li><a href="verifikasi_akun.php"><i class="fas fa-users"></i><span>Daftar Akun</span></a></li>
+                </ul>
+            </nav>
+            
+            
+        </div>
+        
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <header class="topbar">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="user-actions">
+                    <div class="notification-bell">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-menu">
+                        <span class="username">John Doe</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="content">
+                <h2>Absensi Harian</h2>
+                
+                <div class="reset-attendance">
+                    <button id="resetAttendance" class="btn-reset">
+                        <i class="fas fa-redo"></i> Reset Absensi Hari Ini
+                    </button>
+                </div>
+                
+                <!-- Check-in Form -->
+                <div class="attendance-card">
+                    <h3><i class="fas fa-sign-in-alt"></i> Absensi Masuk</h3>
+                    
+                    <div id="checkin-form">
+                        <form id="checkinForm">
+                            <div class="form-group">
+                                <label>Ambil Foto Selfie:</label>
+                                <div class="photo-options">
+                                    <button type="button" id="openCameraCheckin" class="btn-camera">
+                                        <i class="fas fa-camera"></i> Live Camera
+                                    </button>
+                                    <span class="or-text">atau</span>
+                                    <label class="btn-upload">
+                                        <i class="fas fa-upload"></i> Upload Foto
+                                        <input type="file" id="checkinPhotoFile" accept="image/*" style="display:none;">
+                                    </label>
+                                </div>
+                                
+                                <div id="checkinCameraContainer" class="camera-container">
+                                    <video id="checkinCameraView" autoplay playsinline></video>
+                                    <div class="camera-controls">
+                                        <button type="button" id="captureCheckin" class="btn-capture">Ambil Foto</button>
+                                        <button type="button" id="cancelCheckin" class="btn-cancel">Batal</button>
+                                    </div>
+                                </div>
+                                
+                                <canvas id="checkinCanvas" style="display:none;"></canvas>
+                                <input type="hidden" id="checkinPhotoData">
+                                <div id="checkinPhotoPreview" class="photo-preview"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="today_plan">Rencana Kerja Hari Ini:</label>
+                                <textarea id="today_plan" name="today_plan" rows="4" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn-submit">
+                                <i class="fas fa-check-circle"></i> Submit Absensi Masuk
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div id="checkin-success" class="success-message">
+                        <p><i class="fas fa-check-circle"></i> Anda telah melakukan absensi masuk hari ini</p>
+                        <div id="checkin-details" class="checkin-details"></div>
+                        <div class="timestamp">
+                            <i class="fas fa-clock"></i> Waktu submit: <span id="checkin-time"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Activity Form -->
+<div class="attendance-card">
+    <h3><i class="fas fa-tasks"></i> Aktivitas Harian</h3>
+    
+    <div id="activity-required" class="info-message">
+        <i class="fas fa-info-circle"></i>
+        <p>Silakan lakukan absensi masuk terlebih dahulu</p>
+    </div>
+    
+    <div id="activity-form-container" class="activity-form">
+        <form id="activityForm">
+            <div class="form-group">
+                <label for="activityDescription">Aktivitas Hari Ini:</label>
+                <textarea id="activityDescription" rows="6" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Upload Foto Aktivitas:</label>
+                <div class="photo-options">
+                    <label class="btn-upload">
+                        <i class="fas fa-upload"></i> Pilih Foto
+                        <input type="file" id="activityPhotoFile" accept="image/*" multiple style="display:none;">
+                    </label>
+                    <span class="upload-note">(Bisa memilih banyak foto sekaligus)</span>
+                </div>
+                <div id="activityPhotosPreview" class="photos-preview"></div>
+            </div>
+            
+            <button type="submit" class="btn-submit">
+                <i class="fas fa-check-circle"></i> Submit Aktivitas
+            </button>
+        </form>
+    </div>
+    
+    <div id="activity-submitted" class="success-message">
+        <i class="fas fa-check-circle"></i>
+        <p>Aktivitas telah dikirim</p>
+        <div class="timestamp">
+            <i class="fas fa-clock"></i> Waktu submit: <span id="activity-time"></span>
+        </div>
+        <div id="activity-details" class="activity-details"></div>
+        <div id="submitted-photos-container" class="submitted-photos-container"></div>
+    </div>
+</div>
+                
+                <!-- Check-out Form -->
+                <div class="attendance-card">
+                    <h3><i class="fas fa-sign-out-alt"></i> Absensi Pulang</h3>
+                    
+                    <div id="checkout-form" class="checkout-form">
+                        <form id="checkoutForm">
+                            <div class="form-group">
+                                <label>Ambil Foto Selfie:</label>
+                                <div class="photo-options">
+                                    <button type="button" id="openCameraCheckout" class="btn-camera">
+                                        <i class="fas fa-camera"></i> Live Camera
+                                    </button>
+                                    <span class="or-text">atau</span>
+                                    <label class="btn-upload">
+                                        <i class="fas fa-upload"></i> Upload Foto
+                                        <input type="file" id="checkoutPhotoFile" accept="image/*" style="display:none;">
+                                    </label>
+                                </div>
+                                
+                                <div id="checkoutCameraContainer" class="camera-container">
+                                    <video id="checkoutCameraView" autoplay playsinline></video>
+                                    <div class="camera-controls">
+                                        <button type="button" id="captureCheckout" class="btn-capture">Ambil Foto</button>
+                                        <button type="button" id="cancelCheckout" class="btn-cancel">Batal</button>
+                                    </div>
+                                </div>
+                                
+                                <canvas id="checkoutCanvas" style="display:none;"></canvas>
+                                <input type="hidden" id="checkoutPhotoData">
+                                <div id="checkoutPhotoPreview" class="photo-preview"></div>
+                            </div>
+                            
+                            <button type="submit" class="btn-submit">
+                                <i class="fas fa-check-circle"></i> Submit Absensi Pulang
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div id="checkout-pending" class="pending-message">
+                        <p><i class="fas fa-info-circle"></i> Silakan isi aktivitas harian terlebih dahulu</p>
+                    </div>
+                    
+                    <div id="checkout-success" class="success-message">
+                        <p><i class="fas fa-check-circle"></i> Anda telah melakukan absensi pulang hari ini</p>
+                        <div class="timestamp">
+                            <i class="fas fa-clock"></i> Waktu submit: <span id="checkout-time"></span>
+                        </div>
+                    </div>
+                    
+                    <div id="checkout-not-allowed" class="not-allowed-message">
+                        <p><i class="fas fa-info-circle"></i> Silakan lakukan absensi masuk terlebih dahulu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="attendance.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
