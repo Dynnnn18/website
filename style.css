@@ -426,17 +426,119 @@ input:focus, select:focus, textarea:focus {
   display: none;
 }
 
-@media (max-width: 768px) {
-  .detail-grid {
-    grid-template-columns: 1fr;
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 1200px) {
+  .container, .app-container {
+    max-width: 100%;
+    padding: 0 10px;
   }
-  
+}
+
+@media (max-width: 992px) {
+  .container, .app-container {
+    padding: 0 5px;
+  }
+  .main-title {
+    font-size: 2rem;
+  }
+  .main-title-header {
+    padding: 18px 0 8px 0;
+  }
   .section-header {
     flex-direction: column;
     align-items: flex-start;
+    gap: 8px;
   }
-  
-  .btn-add {
-    margin-top: 10px;
+  .detail-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .tabs-nav {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .tabs-content {
+    padding: 10px 2px 2px 2px;
+  }
+  .card, .table-container {
+    padding: 10px 4px 4px 4px;
+  }
+  th, td {
+    padding: 8px 6px;
+    font-size: 0.98em;
+  }
+}
+
+@media (max-width: 768px) {
+  .container, .app-container {
+    padding: 0 2px;
+  }
+  .main-title {
+    font-size: 1.5rem;
+  }
+  .main-title-header {
+    padding: 12px 0 6px 0;
+  }
+  .section-header h2 {
+    font-size: 1.1rem;
+  }
+  .tabs-nav {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .tabs-content {
+    padding: 6px 1px 1px 1px;
+  }
+  .card, .table-container {
+    padding: 6px 2px 2px 2px;
+  }
+  th, td {
+    padding: 7px 3px;
+    font-size: 0.95em;
+  }
+  .btn, button, .btn-add, .btn-edit, .btn-delete, .btn-submit, .btn-cancel {
+    font-size: 0.95rem;
+    padding: 7px 10px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 0.95rem;
+    padding: 8px 10px;
+  }
+  .detail-photo img {
+    max-height: 120px;
+  }
+}
+
+@media (max-width: 576px) {
+  .main-title {
+    font-size: 1.1rem;
+  }
+  .main-title-header {
+    padding: 8px 0 4px 0;
+  }
+  .section-header h2 {
+    font-size: 1rem;
+  }
+  .modal-content {
+    width: 99vw;
+    max-width: 99vw;
+    padding: 6px;
+  }
+  .btn, button, .btn-add, .btn-edit, .btn-delete, .btn-submit, .btn-cancel {
+    font-size: 0.9rem;
+    padding: 6px 7px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 0.9rem;
+    padding: 7px 7px;
+  }
+  th, td {
+    font-size: 0.9em;
+    padding: 6px 2px;
   }
 }
