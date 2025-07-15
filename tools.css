@@ -377,23 +377,93 @@ textarea {
   white-space: pre-line;
 }
 
+@media (max-width: 992px) {
+  .dashboard-wrapper {
+    flex-direction: column;
+  }
+  .sidebar {
+    position: fixed;
+    left: -100vw;
+    width: 220px;
+    z-index: 1200;
+    transition: left 0.3s;
+  }
+  .sidebar.active {
+    left: 0;
+  }
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1100;
+  }
+}
+
 @media (max-width: 768px) {
   .app-container {
     padding: 10px;
   }
-  
   .section-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
   }
-  
   .form-row {
     flex-direction: column;
     gap: 0;
   }
-  
   .modal-content {
-    width: 95%;
+    width: 99%;
+    min-width: unset;
+    padding: 10px;
+  }
+  .tabs-nav {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .tabs-content {
+    padding: 8px 2px 2px 2px;
+  }
+  .card {
+    padding: 10px 4px 4px 4px;
+  }
+  th, td {
+    padding: 7px 4px;
+    font-size: 0.95em;
+  }
+  .main-title-header {
+    padding: 18px 0 6px 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .main-title {
+    font-size: 1.5rem;
+  }
+  .main-subtitle {
+    font-size: 1rem;
+  }
+  .modal-content {
+    max-width: 99vw;
+    padding: 6px;
+  }
+  .section-header h2 {
+    font-size: 1.1rem;
+  }
+  .btn, button {
+    font-size: 0.95rem;
+    padding: 7px 10px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 0.95rem;
+    padding: 8px 10px;
+  }
+  .detail-photo img {
+    max-height: 120px;
   }
 }
